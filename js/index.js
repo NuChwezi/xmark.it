@@ -21,13 +21,14 @@ function make_qrcode(selector,data,size){
 }
 
 
-function renderXMARK(vname, vphone, vemail, vcompany, vtitle) {
+function renderXMARK(vname, vphone, vemail, vcompany, vtitle, vmeta) {
     var xmark = {
         name: vname,
         phone: vphone,
         email: vemail,
         company: vcompany,
-        title: vtitle
+        title: vtitle,
+        meta: vmeta,
     }
 
     var jXMARK = JSON.stringify(xmark);
@@ -37,7 +38,7 @@ function renderXMARK(vname, vphone, vemail, vcompany, vtitle) {
     hideEdit();
     $('#btn-export').click(function(){
 
-        make_qrcode('#i-download','https://xmark.it/xmark.it-android-client.apk',defaultQRCODE_EXPORT_SIZE);
+        make_qrcode('#i-download','https://raw.githubusercontent.com/NuChwezi/xmark-android-client/master/release/XMark.apk',defaultQRCODE_EXPORT_SIZE);
         $('#divider').css({'width': defaultQRCODE_EXPORT_SIZE * 0.25 + 'px' });
         make_qrcode('#i-xmark',jXMARK, defaultQRCODE_EXPORT_SIZE);
 
@@ -59,8 +60,9 @@ function generateXMARK() {
     var email = v('email');
     var company = v('company');
     var title = v('title');
+    var meta = v('meta');
 
-    renderXMARK(name, phone, email, company, title);
+    renderXMARK(name, phone, email, company, title, meta);
 }
 
 function hideEdit() {
