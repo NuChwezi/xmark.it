@@ -32,17 +32,17 @@ function renderXMARK(vname, vphone, vemail, vcompany, vtitle, vmeta) {
     }
 
     var jXMARK = JSON.stringify(xmark);
-    make_qrcode('#i-download','https://xmark.it/xmark.it-android-client.apk',defaultQRCODE_SIZE);
-    $('#divider').css({'width': 'auto'});
     make_qrcode('#i-xmark',jXMARK, defaultQRCODE_SIZE);
+    $('#divider').css({'width': 'auto'});
+    make_qrcode('#i-download','https://xmark.it/xmark.it-android-client.apk',defaultQRCODE_SIZE);
     hideEdit();
     $('#btn-export').click(function(){
 
         $('#container').hide(); // so it doesn't show in the image export
 
-        make_qrcode('#i-download','https://raw.githubusercontent.com/NuChwezi/xmark-android-client/master/release/XMark.apk',defaultQRCODE_EXPORT_SIZE);
-        $('#divider').css({'width': defaultQRCODE_EXPORT_SIZE * 0.25 + 'px' });
         make_qrcode('#i-xmark',jXMARK, defaultQRCODE_EXPORT_SIZE);
+        $('#divider').css({'width': defaultQRCODE_EXPORT_SIZE * 0.25 + 'px' });
+        make_qrcode('#i-download','https://raw.githubusercontent.com/NuChwezi/xmark-android-client/master/release/XMark.apk',defaultQRCODE_EXPORT_SIZE);
 
         $('#xmark').modal({opacity:100, onShow: function(){
             setTimeout(function(){ 
